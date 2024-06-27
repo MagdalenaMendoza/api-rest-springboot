@@ -38,6 +38,25 @@ public class ClienteServiceImpl implements ClienteService {
 		return clienteRepository.findById(id).orElse(null);
 	}
 	
+	@Override
+	@Transactional(readOnly=true)
+	public List<Cliente> buscarNombre(String nombre) {
+		// TODO Auto-generated method stub
+		return (List<Cliente>) clienteRepository.findByNombre(nombre);
+	}
+
+	@Override
+	@Transactional(readOnly=true)
+	public List<Cliente> buscarNombreApellido(String nombre, String apellido) {
+		// TODO Auto-generated method stub
+		return (List<Cliente>) clienteRepository.findByNombreAndApellido(nombre,apellido);
+	}
+
+	@Override
+	public List<Cliente> buscarEmailTelefono(String email, int telefono) {
+		// TODO Auto-generated method stub
+		return (List<Cliente>) clienteRepository.findByEmailAndTelefono(email,telefono);
+	}
 	
 
 }

@@ -28,6 +28,21 @@ public class CLienteRestController {
 		return clienteService.buscarId(id);
 	}
 	
+	@GetMapping("/cliente/{nombre}")
+	public List<Cliente> show(@PathVariable String nombre){
+		return clienteService.buscarNombre(nombre);
+	}
+
+	@GetMapping("/cliente/{nombre}/{apellido}")
+	public List<Cliente> show(@PathVariable String nombre, @PathVariable String apellido){
+		return clienteService.buscarNombreApellido(nombre,apellido);
+	}
+	
+	@GetMapping("/cliente2/{email}/{telefono}")
+	public List<Cliente> show(@PathVariable String email, @PathVariable int telefono){
+		return clienteService.buscarEmailTelefono(email,telefono);
+	}
+	
 	@PostMapping("/clientes")
 	public Cliente creat(@RequestBody Cliente cliente) {
 		return clienteService.guardar(cliente);
